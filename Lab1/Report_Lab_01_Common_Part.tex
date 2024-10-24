@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article}
+\AddToHook{cmd/section/before}{\clearpage}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{color}
+
+\title{Lab 01 Report}
+\author{Julian Rapp, Jona Boecker, Lara Geyer, Tobias Stoehr, Berrak Uzun, Julian Ambrozy}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Introduction}
+	This document describes the steps taken to complete a series of exercises using the Arduino Nano RP2040 Connect board. Each exercise focused on a different functionality of the board, including working with LEDs, sensors, and accelerometers. The goal was to familiarize ourselves with basic coding tasks on the Arduino platform while interacting with various hardware components. This report outlines the approach, challenges faced, and the results obtained for each exercise.
+	
+	\section{Exercise 0: Blink Test}
+	The first exercise was aimed at confirming that the development environment was set up correctly. We started by testing the default Blink sketch provided by the Arduino IDE to verify the Arduino Nano RP2040 Connect board's functionality.
+	
+	\subsection{Steps}
+	\begin{enumerate}
+		\item The Arduino Nano RP2040 Connect was connected to the host PC using a micro-USB cable. The default factory code ran as expected, with the green power LED remaining on and the orange built-in LED flashing.
+		\item We opened the Arduino IDE and navigated to \textit{File/Examples/Basics/Blink} to load the Blink sketch.
+		\item Under \textit{Tools/Board}, we installed the Arduino Mbed OS Nano Boards package from the Board Manager. Once the package was installed, the correct board type, \textit{Arduino Nano RP2040 Connect}, was selected.
+		\item Next, we selected the appropriate port where the board was connected, \textit{Tools/Port/COM9}, in our case.
+		\item We uploaded the sketch to the board by clicking the Upload button. Once the upload was completed, the orange LED blinked at one-second intervals, indicating the successful execution of the Blink sketch.
+	\end{enumerate}
+	
+	\subsection{Challenges}
+	No major challenges were encountered during this step, as it mainly involved verifying that the development environment was functioning correctly.
+	
+	\subsection{Result}
+	The orange LED on the Arduino Nano RP2040 Connect blinked as expected, confirming that the board and the Arduino IDE were set up correctly.
+	
+	\section{Exercise 1: Internal RGB LED Control}
+	In this exercise, we aimed to control the internal RGB LED to cycle through red, green, and blue every half-second.
+	
+	\subsection{Steps}
+	\begin{enumerate}
+		\item We created a new sketch named \textit{Exercise1\_RGB}.
+		\item To control the RGB LED, we used the WiFiNINA library, which was installed by navigating to \textit{Sketch/Include Library/Manage Libraries} and searching for WiFiNINA.
+		\item We implemented code to change the RGB LED color, setting red, green, and blue to cycle every 500 ms. This was done by performing a "DigitalWrite" to the designated pin of each Color of the RGB LED, turning the colors on/off.
+		\item The sketch was uploaded to the board, and the LED cycled through red, green, and blue, transitioning smoothly every half-second.
+	\end{enumerate}
+	
+	\subsection{Challenges}
+	The main challenge was figuring out how to control the internal RGB LED. However, after reviewing documentation from the Arduino website and examples, we were able to implement the desired behavior.
+	
+	\subsection{Result}
+	The RGB LED successfully transitioned between red, green, and blue every 500 ms, demonstrating that we could manipulate the internal LED through code.
+	
+	\section{Exercise 2: Temperature Sensor and RGB Indicator}
+	In this exercise, we used the internal temperature sensor and made the RGB LED change color based on the temperature readings.
+	
+	\subsection{Steps}
+	\begin{enumerate}
+		\item A new sketch named \textit{Exercise2\_Temperature} was created, reusing parts of the code from Exercise 1.
+		\item The internal temperature sensor was read via the IMU module. We implemented a function to output the temperature in Celsius via the Serial Monitor at a baud rate of 9600.
+		\item Depending on the temperature reading, the RGB LED was set to change its color:
+		\begin{itemize}
+			\item Red if the temperature exceeded 32°C.
+			\item Green if the temperature was between 20°C and 32°C.
+			\item Blue if the temperature was below 20°C.
+		\end{itemize}
+		\item We uploaded the sketch and verified the temperature readings via the Serial Monitor, with the RGB LED changing color according to the temperature thresholds.
+	\end{enumerate}
+	
+	\subsection{Challenges}
+	The temperature sensor readings were consistently higher than the ambient room temperature. This discrepancy could be due to heat from other components on the board. A possible solution could involve adding an offset to the temperature readings to better reflect the actual room temperature.
+	
+	\subsection{Result}
+	The temperature was displayed correctly on the Serial Monitor, and the RGB LED responded to the defined temperature ranges. However, an adjustment to the temperature calibration would be necessary for more accurate results in a production environment.
+	
+	\section{Exercise 3: Microphone Signal Display}
+	This exercise involved using the microphone to visualize sound signals through the Serial Plotter.
+	
+	\subsection{Steps}
+	\begin{enumerate}
+		\item A new sketch named \textit{Exercise3\_Microphone} was created.
+		\item We utilized the tutorial provided to implement microphone signal acquisition and plotted the output using the Serial Plotter.
+		\item After uploading the sketch, the microphone's signal amplitude was displayed in real-time as visualized through the Serial Plotter.
+	\end{enumerate}
+	
+	\subsection{Challenges}
+	Some compilation warnings were observed, but they did not affect the functionality of the code. These warnings can be ignored for this task, as the Serial Plotter correctly displayed microphone signals.
+	
+	\subsection{Result}
+	The microphone successfully captured sound data, and the signals were plotted in real-time, helping us understand how to interact with audio input on the Arduino Nano RP2040 Connect.
+	
+	\section{Exercise 4: Posture Detector Using Accelerometer}
+	In the final exercise, we developed a posture detection system using the onboard accelerometer.
+	
+	\subsection{Steps}
+	\begin{enumerate}
+		\item A new sketch named \textit{Exercise4\_Posture} was created.
+		\item The IMU module was used to read accelerometer and gyroscope data, which were fed into the Madgwick filter to calculate the pitch.
+		\item We set a threshold to detect whether the posture was correct (i.e., around 90 degrees relative to the horizontal axis).
+		\item The RGB LED was programmed to light up if an incorrect posture was detected. For example, the LED would turn red if the pitch angle was below 80°.
+		\item The sketch was uploaded, and the posture detection system was tested.
+	\end{enumerate}
+	
+	\subsection{Challenges}
+	Understanding how to implement the Madgwick filter and adapt it to the IMU readings took some time. However, after referencing the documentation, we were able to configure the posture detection system successfully.
+	
+	\subsection{Result}
+	The accelerometer data was processed to detect posture, and the RGB LED provided visual feedback for incorrect posture. This exercise demonstrated the integration of sensor data and real-time feedback.
+	
+\end{document}
