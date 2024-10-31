@@ -10,7 +10,7 @@ static const char channels = 1;
 static const int frequency = 16000;
 
 // Buffer to read samples into, each sample is 16-bits
-short sampleBuffer[512];
+short sampleBuffer[2048];
 
 // Number of audio samples read
 volatile int samplesRead;
