@@ -1,4 +1,5 @@
 #include <WiFiNINA.h>
+#include <Arduino_LSM6DSOX.h>
 
 void setup() {
   // put your setup code here, to run once:
