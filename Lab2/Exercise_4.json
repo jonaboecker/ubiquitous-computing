@@ -1,0 +1,309 @@
+[
+    {
+        "id": "9e54c1bda2499dd2",
+        "type": "tab",
+        "label": "Exercise_4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "747149b3a5ab0d0d",
+        "type": "inject",
+        "z": "9e54c1bda2499dd2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "5860f9b4a188c9f0",
+                "85bf288ef456782b",
+                "a39ac2338ada737e",
+                "e7bcebfc72511682"
+            ]
+        ]
+    },
+    {
+        "id": "5860f9b4a188c9f0",
+        "type": "moment",
+        "z": "9e54c1bda2499dd2",
+        "name": "",
+        "topic": "",
+        "input": "payload",
+        "inputType": "msg",
+        "inTz": "Europe/Berlin",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "DD/MM/YY HH:mm:ss",
+        "locale": "en-US",
+        "output": "payload",
+        "outputType": "msg",
+        "outTz": "Europe/Berlin",
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "f8953bdbecd160b7",
+                "681aa966832dd5f2"
+            ]
+        ]
+    },
+    {
+        "id": "85bf288ef456782b",
+        "type": "moment",
+        "z": "9e54c1bda2499dd2",
+        "name": "",
+        "topic": "",
+        "input": "payload",
+        "inputType": "msg",
+        "inTz": "Europe/Berlin",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "dddd, MMMM Do YYYY, h:mm:ss a",
+        "locale": "en-US",
+        "output": "payload",
+        "outputType": "msg",
+        "outTz": "Europe/Berlin",
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "6f25cce67a0f8dc9",
+                "d6a1efeb5b13fcb5"
+            ]
+        ]
+    },
+    {
+        "id": "a39ac2338ada737e",
+        "type": "debug",
+        "z": "9e54c1bda2499dd2",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e7bcebfc72511682",
+        "type": "ui-text",
+        "z": "9e54c1bda2499dd2",
+        "group": "4fd53506dd85cb49",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "EPOCH",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "x": 560,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "f8953bdbecd160b7",
+        "type": "rbe",
+        "z": "9e54c1bda2499dd2",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 810,
+        "y": 280,
+        "wires": [
+            [
+                "e2041cfae1f6e6c7"
+            ]
+        ]
+    },
+    {
+        "id": "e2041cfae1f6e6c7",
+        "type": "ui-text",
+        "z": "9e54c1bda2499dd2",
+        "group": "4fd53506dd85cb49",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Date Time Format 1",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "x": 1020,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "681aa966832dd5f2",
+        "type": "debug",
+        "z": "9e54c1bda2499dd2",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6f25cce67a0f8dc9",
+        "type": "debug",
+        "z": "9e54c1bda2499dd2",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "d6a1efeb5b13fcb5",
+        "type": "ui-text",
+        "z": "9e54c1bda2499dd2",
+        "group": "4fd53506dd85cb49",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Date Time Format 2",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "x": 860,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "4fd53506dd85cb49",
+        "type": "ui-group",
+        "name": "Flow_Exercise_4",
+        "page": "849ba37c107e1ecb",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "849ba37c107e1ecb",
+        "type": "ui-page",
+        "name": "Flow Ex4",
+        "ui": "f562e97331fabd34",
+        "path": "/ex4",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "8d15af043631d29a",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "f562e97331fabd34",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "showPageTitle": true,
+        "navigationStyle": "default",
+        "titleBarStyle": "default"
+    },
+    {
+        "id": "8d15af043631d29a",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    }
+]
