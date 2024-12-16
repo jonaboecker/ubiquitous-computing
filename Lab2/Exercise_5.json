@@ -248,7 +248,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "https://api.openweathermap.org/data/2.5/weather?q=Konstanz,de&units=metric&appid=3ddc016b54ff55c596c6b7f83fe7f576",
+        "url": "https://api.openweathermap.org/data/2.5/weather?q=Konstanz,de&units=metric&appid=YOUR_TOKEN",
         "tls": "",
         "persist": false,
         "proxy": "",
