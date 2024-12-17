@@ -1,0 +1,192 @@
+[
+    {
+        "id": "d15b2462ad8edfbb",
+        "type": "tab",
+        "label": "lab3_ex1.2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "23db4087ca832050",
+        "type": "ui_switch",
+        "z": "d15b2462ad8edfbb",
+        "name": "",
+        "label": "LED",
+        "tooltip": "",
+        "group": "faea8a43f362adf3",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 810,
+        "y": 60,
+        "wires": [
+            [
+                "958131e63be0207d"
+            ]
+        ]
+    },
+    {
+        "id": "8232117f978532ee",
+        "type": "inject",
+        "z": "d15b2462ad8edfbb",
+        "name": "1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 810,
+        "y": 120,
+        "wires": [
+            [
+                "00f25b59511012b2",
+                "958131e63be0207d"
+            ]
+        ]
+    },
+    {
+        "id": "7557d8ef441e4ccc",
+        "type": "inject",
+        "z": "d15b2462ad8edfbb",
+        "name": "0",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 810,
+        "y": 160,
+        "wires": [
+            [
+                "00f25b59511012b2",
+                "958131e63be0207d"
+            ]
+        ]
+    },
+    {
+        "id": "00f25b59511012b2",
+        "type": "debug",
+        "z": "d15b2462ad8edfbb",
+        "name": "SEND",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c8f5a965859df1ed",
+        "type": "http request",
+        "z": "d15b2462ad8edfbb",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1310,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "958131e63be0207d",
+        "type": "function",
+        "z": "d15b2462ad8edfbb",
+        "name": "dynamic_http_request",
+        "func": "if (msg.payload === 1) {\n    msg.url = \"http://192.168.178.86/1\";\n} else if (msg.payload === 0) {\n    msg.url = \"http://192.168.178.86/0\";\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 60,
+        "wires": [
+            [
+                "c8f5a965859df1ed",
+                "2f4c461be9971a90"
+            ]
+        ]
+    },
+    {
+        "id": "2f4c461be9971a90",
+        "type": "debug",
+        "z": "d15b2462ad8edfbb",
+        "name": "Request",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "faea8a43f362adf3",
+        "type": "ui_group",
+        "name": "Light Control",
+        "tab": "154e9bd2c0ae1e49",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "154e9bd2c0ae1e49",
+        "type": "ui_tab",
+        "name": "LED_WiFi",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
