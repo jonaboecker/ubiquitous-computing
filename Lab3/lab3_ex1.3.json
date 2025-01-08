@@ -1,0 +1,216 @@
+[
+    {
+        "id": "cc2eec6ad2478a5e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "731b8122106b1534",
+        "type": "serial out",
+        "z": "cc2eec6ad2478a5e",
+        "name": "Serial_Out",
+        "serial": "62f9f371d6641935",
+        "x": 470,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1ef103e70a4b6f01",
+        "type": "debug",
+        "z": "cc2eec6ad2478a5e",
+        "name": "SEND",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d8dbc7109eb1bbc6",
+        "type": "ui_switch",
+        "z": "cc2eec6ad2478a5e",
+        "name": "",
+        "label": "LED",
+        "tooltip": "",
+        "group": "e3983549fdce3f3a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "731b8122106b1534",
+                "1ef103e70a4b6f01",
+                "851e6aa4fe0748a9"
+            ]
+        ]
+    },
+    {
+        "id": "a05ce130a33d4781",
+        "type": "serial in",
+        "z": "cc2eec6ad2478a5e",
+        "name": "Serial_In",
+        "serial": "47217533c577d375",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "eed4e9a20e6b2140",
+                "c3e971a4c11db377"
+            ]
+        ]
+    },
+    {
+        "id": "851e6aa4fe0748a9",
+        "type": "ui_led",
+        "z": "cc2eec6ad2478a5e",
+        "order": 1,
+        "group": "e3983549fdce3f3a",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#c0c0c0",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 450,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "eed4e9a20e6b2140",
+        "type": "debug",
+        "z": "cc2eec6ad2478a5e",
+        "name": "IN",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c3e971a4c11db377",
+        "type": "function",
+        "z": "cc2eec6ad2478a5e",
+        "name": "trim",
+        "func": "msg.payload = parseInt(msg.payload.trim(), 10);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "d8dbc7109eb1bbc6"
+            ]
+        ]
+    },
+    {
+        "id": "62f9f371d6641935",
+        "type": "serial-port",
+        "name": "Serial_Out",
+        "serialport": "COM3",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "e3983549fdce3f3a",
+        "type": "ui_group",
+        "name": "LED_synchron",
+        "tab": "84fdccc88ae224b5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "47217533c577d375",
+        "type": "serial-port",
+        "name": "Serial_In",
+        "serialport": "COM3",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\r",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "84fdccc88ae224b5",
+        "type": "ui_tab",
+        "name": "LED_synchron",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]
